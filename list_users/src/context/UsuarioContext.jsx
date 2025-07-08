@@ -8,6 +8,15 @@ export function UsuarioProvider({ children }) {
   const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(true);
 
+  //paginacion
+  const [paginaActual, setPaginaActual] = useState(1);
+  const usuarios_por_pagina = 5;
+
+  const indiceInicio = (paginaActual - 1) * usuarios_por_pagina;
+  const indiceFinal = paginaActual + usuarios_por_pagina;
+
+  const usuariosPaginados = usuarios.slice(indiceInicio, indiceFinal);
+
   const obtenerUsuarios = async () => {
     setCargando(true);
     try {
@@ -29,7 +38,17 @@ export function UsuarioProvider({ children }) {
 
   return (
     <UsuarioContext.Provider
-      value={{ usuarios, cargando, obtenerUsuarios, busqueda, setBusqueda }}
+      value={{
+        usuarios,
+        cargando,
+        obtenerUsuarios,
+        busqueda,
+        setBusqueda,
+        usuariosPaginados,
+        paginaActual,
+        setPaginaActual,
+        usuarios_por_pagina,
+      }}
     >
       {children}
     </UsuarioContext.Provider>

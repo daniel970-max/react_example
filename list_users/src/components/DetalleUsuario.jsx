@@ -12,7 +12,7 @@ function DetalleUsuario() {
   if (!usuario) return <p className="message">Usuario no encontrado</p>;
   return (
     <>
-      <h1 className="texto_nuevo">Usuario: </h1>
+      <h1 className="texto_nuevo">Detalles del usuario: </h1>
       <h2>{usuario.name}</h2>
       <div className="contenido_datos">
         <p>Email: {usuario.email}</p>
